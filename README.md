@@ -12,7 +12,8 @@ This project was programmed and tested using the following software and hardware
 
 * Macbook running macOS High Sierra
 * Arduino IDE 1.8.3
-* Python virtualenv 15.1.0
+* Python 2.7.10
+* Python module [virtualenv](https://virtualenv.pypa.io/en/stable/) 15.1.0
 *
 
 ## Code
@@ -36,14 +37,41 @@ This project was programmed and tested using the following software and hardware
 cd blabla/servo_camera
 ```
 
+* Check that you are using Python 2.x
+
+```shell
+python --version
+```
+
+* Check that you have virtualenv
+
+```shell
+virtualenv --version
+```
+
+Or install it
+
+```shell
+pip install virtualenv
+```
+
 * Initialize a virtual environment, call it env
 
 ```shell
 python virtualenv env
 ```
 
-* Activate 
+* Activate the virtual environment
 
+```shell
+source env/bin/activate
+```
+
+* Deactivate the virtual environment
+
+```shell
+source env/bin/activate
+```
 
 ## Bibliography
 
