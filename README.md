@@ -67,10 +67,17 @@ python virtualenv env
 source env/bin/activate
 ```
 
-* Deactivate the virtual environment
+* Install pyserial
 
 ```shell
-source env/bin/activate
+pip install pyserial
+```
+
+
+* When finished, deactivate the virtual environment
+
+```shell
+deactivate
 ```
 
 ## Bibliography
