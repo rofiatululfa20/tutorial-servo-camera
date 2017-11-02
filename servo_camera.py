@@ -20,13 +20,13 @@ ser = serial.Serial(arduinoPort, arduinoBaudRate)
 
 time.sleep(2)
 while True:
-    ser.write("0\n")#.encode('utf-8'))
+    ser.write("0,0\n")#.encode('utf-8'))
     time.sleep(1)
-    ser.write("90\n")
+    ser.write("90,90\n")
     time.sleep(1)
-    ser.write("180\n")
+    ser.write("180,180\n")
     time.sleep(1)
-    ser.write("90\n")
+    ser.write("90,90\n")
     time.sleep(1)
 
 # infinite loop

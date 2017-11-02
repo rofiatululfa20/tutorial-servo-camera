@@ -4,7 +4,7 @@
 //november 2018
 
 //script for controlling a servo motor
-//via a python script
+//via a python script with pyserial module
 
 //include servo library
 #include <Servo.h>
@@ -28,46 +28,63 @@ int deltaPitch = 1;
 //step of time
 int deltaTime = 5;
 
-int incomingByte = 0;
+//store of input
+String inputYaw = "";
+String inputPitch = "";
 
-String inputString = "";
-boolean stringComplete = false;
+//flag for input being ready
+boolean readyYaw = false;
+boolean readyPitch = false;
 
 void setup() {
+
   //begin serial communication
   Serial.begin(9600);
+
   //attach a pin to the yaw servo
   servoYaw.attach(pinYaw);
   //attach a pin to the pitch servo
   servoPitch.attach(pinPitch);
-  //reserve 200 bytes for the inputString
-  inputString.reserve(200);
+
+  //reserve 200 bytes for the inputs
+  inputYaw.reserve(200);
+  inputPitch.reserve(200);
 }
 
 void loop() {
 
-  if (stringComplete) {
-    Serial.println(inputString);
-    moveYaw(inputString.toInt());
+  if (readyYaw && readyPitch) {
+
+    //move yaw
+    moveYaw(inputYaw.toInt());
     delay(1);
-    movePitch(inputString.toInt());
+
+    //move pitch
+    movePitch(inputPitch.toInt());
     delay(1);
-    //clear
-    inputString = "";
-    stringComplete = false;
+
+    //clear input
+    inputYaw = "";
+    inputPitch = "";
+    readyYaw = false;
+    readyPitch = false;
+    
   }
 }
 
 //function for moving servo to desired yaw
 void moveYaw(int desiredYaw) {
 
-  //check if desiredPos is in range 0-180
+  //check range 0-180
   if (desiredYaw >= 0 && desiredYaw <= 180) {
 
+    //move in one direction
     while (desiredYaw - currentYaw > deltaYaw) {
       currentYaw = currentYaw + deltaYaw;
       servoYaw.write(currentYaw);
     }
+
+    //or move in the other direction
     while (desiredYaw - currentYaw < deltaYaw) {
       currentYaw = currentYaw - deltaYaw;
       servoYaw.write(currentYaw);
@@ -78,13 +95,16 @@ void moveYaw(int desiredYaw) {
 //function for moving servo to desired pitch
 void movePitch(int desiredPitch) {
 
-  //check if desiredPos is in range 0-180
+  //check range 0-180
   if (desiredPitch >= 0 && desiredPitch <= 180) {
 
+    //move in one direction
     while (desiredPitch - currentPitch > deltaPitch) {
       currentPitch = currentPitch + deltaPitch;
       servoPitch.write(currentPitch);
     }
+
+    //or move in the other direction
     while (desiredPitch - currentPitch < deltaPitch) {
       currentPitch = currentPitch - deltaPitch;
       servoPitch.write(currentPitch);
@@ -92,15 +112,30 @@ void movePitch(int desiredPitch) {
   }
 }
 
+//function triggered everytime there is a serial event
 void serialEvent() {
   while (Serial.available()) {
-    //get the new byte
+    //get the new char
     char inChar = (char)Serial.read();
-    //add it to the inputString
-    inputString = inputString + inChar;
-    //if the incoming character is a new line, set a flag
+
+    //check if char is new line
     if (inChar == '\n') {
-      stringComplete = true;
+      readyYaw = true;
+      readyPitch = true;
+    }
+
+    //if char is comma and yaw is not ready
+    if (inChar == ',' && !readyYaw) {
+      readyYaw = true;
+      readyPitch = false;
+    }
+
+    //append newChar to the corresponding input
+    if (!readyYaw) {
+      inputYaw = inputYaw + inChar;
+    }
+    if (!readyPitch) {
+      inputPitch = inputPitch + inChar;
     }
   }
 }
