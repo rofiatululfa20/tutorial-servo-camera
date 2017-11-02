@@ -1,5 +1,8 @@
 # servo_camera
 
+[02_final](https://github.com/montoyamoraga/servo_camera/raw/master/pics/02_final.png "blabla")
+
+
 ## About
 
 This project by [Aarón Montoya-Moraga](http://montoyamoraga.io/) consists of a webcam on servos that can be controlled from a Python script.
