@@ -23,15 +23,21 @@ time.sleep(2)
 #delta of time, in seconds
 deltaTime = 0.5
 
-# infinite loop
+# infinite loop so that servos go through the sequence
+# [0,0], [90, 90], [180, 180], [90, 90]
+# format of data sent to Arduino is yaw,pitch\n
+# both values separated by a comma and ending on a new line
 while True:
-    #write on serial port
+    #write on serial port and wait
     ser.write("0,0\n")
     time.sleep(deltaTime)
+
     ser.write("90,90\n")
     time.sleep(deltaTime)
+
     ser.write("180,180\n")
     time.sleep(deltaTime)
+
     ser.write("90,90\n")
     time.sleep(deltaTime)
 
