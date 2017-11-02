@@ -1,13 +1,32 @@
+# by aaron montoya-moraga
+# november 2017
+
+# import pyserial for writing serial to arduino
 import serial
+# import sys for retrieving arguments from commmand line
 import sys
+# import time for sleep function
+import time
 
-# serial.tools.list_ports.comports()
+arduinoPort = '/dev/cu.usbmodem1461'
+arduinoBaudRate = 9600
 
-# ser = serial.Serial('/dev/tty.usbserial', 9600)
 
-ser = serial.Serial('/dev/cu.usbmodem1461', 9600)
+ser = serial.Serial(arduinoPort, arduinoBaudRate)
+print(ser.name)
+time.sleep(5)
+ser.write("5\n")#.encode('utf-8'))
 
-ser.write('5')
+# infinite loop
+while True:
+
+
 
 if (len(sys.argv) > 1):
-    print sys.argv[1]
+    x = sys.argv[1]
+    ser.write(b'90\n')
+    # ser.write(x)
+    print x
+
+time.sleep(5)
+ser.close()
