@@ -1,11 +1,25 @@
 #include <Servo.h>
 
+Servo rotation;
+
+int counter = 0;
+
 void setup() {
-  // put your setup code here, to run once:
-  
+  Serial.begin(9600);
+  rotation.attach(9);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+
+
+
 
 }
+
+//rotation.write(counter);
+//
+//delay(150);
+//Serial.println(counter);
+//
+//counter = counter + 1;
+//counter = counter % 180;
