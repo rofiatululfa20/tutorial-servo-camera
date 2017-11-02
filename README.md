@@ -1,6 +1,6 @@
 # servo_camera
 
-![02_final](https://github.com/montoyamoraga/servo_camera/blob/master/pics/02_final.png "blabla")
+![02_final](https://github.com/montoyamoraga/servo_camera/blob/master/pics/02_final.jpg "blabla")
 
 
 ## About
