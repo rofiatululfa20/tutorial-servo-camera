@@ -3,8 +3,8 @@
 //project for sam lavigne's automating video class
 //november 2018
 
-//script for controlling a servo motor
-//via a python script with pyserial module
+//script for controlling a servo motor with arduino
+//via python script with pyserial module
 
 //include servo library
 #include <Servo.h>

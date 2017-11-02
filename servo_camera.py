@@ -2,41 +2,41 @@
 # by aaron montoya-moraga
 # november 2017
 
+# script for controlling a servo motor with arduino
+# via python script with pyserial module
+
 # import pyserial for writing serial to arduino
 import serial
-# import sys for retrieving arguments from commmand line
-import sys
 # import time for sleep function
 import time
 
-#configuration of arduino
+# configuration of arduino
 arduinoPort = '/dev/cu.usbmodem1461'
 arduinoBaudRate = 9600
 
 # open the serial port, this resets the arduino
 ser = serial.Serial(arduinoPort, arduinoBaudRate)
 
-# wait two seconds so that arduino can reset
-
+# wait so that arduino can reset
 time.sleep(2)
-while True:
-    ser.write("0,0\n")#.encode('utf-8'))
-    time.sleep(1)
-    ser.write("90,90\n")
-    time.sleep(1)
-    ser.write("180,180\n")
-    time.sleep(1)
-    ser.write("90,90\n")
-    time.sleep(1)
+
+#delta of time, in seconds
+deltaTime = 0.5
 
 # infinite loop
-# while True:
+while True:
+    #write
+    ser.write("0,0\n")
+    time.sleep(deltaTime)
+    ser.write("90,90\n")
+    time.sleep(deltaTime)
+    ser.write("180,180\n")
+    time.sleep(deltaTime)
+    ser.write("90,90\n")
+    time.sleep(deltaTime)
 
-if (len(sys.argv) > 1):
-    x = sys.argv[1]
-    ser.write(b'90\n')
-    # ser.write(x)
-    print x
+# wait
+time.sleep(2)
 
-time.sleep(5)
+# close the serial port
 ser.close()
