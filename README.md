@@ -2,7 +2,7 @@
 
 ## About
 
-This project by [Aarón Montoya-Moraga](http://montoyamoraga.io/) consists of a webcam on a servo that can be controlled from a Python script.
+This project by [Aarón Montoya-Moraga](http://montoyamoraga.io/) consists of a webcam on servos that can be controlled from a Python script.
 
 Developed for [Sam Lavigne](http://lav.io/)'s [Automating video](https://github.com/antiboredom/automating-video-itp) class, at [New York University](http://www.nyu.edu/)'s [Interactive Telecommunications Program](https://tisch.nyu.edu/itp), November 2017.
 
@@ -11,48 +11,49 @@ Developed for [Sam Lavigne](http://lav.io/)'s [Automating video](https://github.
 This project was programmed and tested using the following software and hardware:
 
 * Macbook running macOS High Sierra
+* Arduino Uno
 * Arduino IDE 1.8.3
 * Python 2.7.10
-* Python module [virtualenv](https://virtualenv.pypa.io/en/stable/) 15.1.0
-*
+* [virtualenv](https://virtualenv.pypa.io/en/stable/) 15.1.0 Python module
+* [pyserial](https://github.com/pyserial/pyserial) Python module
 
 ## Code
 
 * Arduino script to receive commands from the Python script.
-* Python script.
+* Python script to send commands to Arduino.
 
 ## Materials
 
 * [Servos](https://www.adafruit.com/product/1967)
 * [Webcam]()
-*
+* Arduino Uno
 
-## Usage
+## Installation
 
-* Clone or download this repository
+* Clone or download this repository [https://github.com/montoyamoraga/servo_camera](https://github.com/montoyamoraga/servo_camera)
 
-* Open terminal and go to the directory
-
-```shell
-cd blabla/servo_camera
-```
-
-* Check that you are using Python 2.x
+* Make sure you are using Python 2.x.
 
 ```shell
 python --version
 ```
 
-* Check that you have virtualenv
-
-```shell
-virtualenv --version
-```
-
-Or install it
+* Install the virtualenv python module
 
 ```shell
 pip install virtualenv
+```
+
+* Upload the script arduino_servo_camera.ino to the Arduino Uno.
+
+* Connect the servo motors to the Arduino.
+
+## Usage
+
+* Open terminal and go to the directory
+
+```shell
+cd Desktop/servo_camera
 ```
 
 * Initialize a virtual environment, call it env
@@ -73,6 +74,19 @@ source env/bin/activate
 pip install pyserial
 ```
 
+* Open the Python script servo_camera.py
+
+* Update the arduinoPort variable if needed
+
+```python
+arduinoPort = '/dev/cu.usbmodem1461'
+```
+
+* Run the Python script on terminal
+
+```shell
+python servo_camera.py
+```
 
 * When finished, deactivate the virtual environment
 

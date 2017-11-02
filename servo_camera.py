@@ -2,7 +2,7 @@
 # by aaron montoya-moraga
 # november 2017
 
-# script for controlling a servo motor with arduino
+# script for controlling servo motors with arduino
 # via python script with pyserial module
 
 # import pyserial for writing serial to arduino
@@ -25,7 +25,7 @@ deltaTime = 0.5
 
 # infinite loop
 while True:
-    #write
+    #write on serial port
     ser.write("0,0\n")
     time.sleep(deltaTime)
     ser.write("90,90\n")

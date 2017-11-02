@@ -3,7 +3,7 @@
 //project for sam lavigne's automating video class
 //november 2018
 
-//script for controlling a servo motor with arduino
+//script for controlling servo motors with arduino
 //via python script with pyserial module
 
 //include servo library
@@ -53,6 +53,7 @@ void setup() {
 
 void loop() {
 
+  //if both inputs 
   if (readyYaw && readyPitch) {
 
     //move yaw
@@ -67,8 +68,7 @@ void loop() {
     inputYaw = "";
     inputPitch = "";
     readyYaw = false;
-    readyPitch = false;
-    
+    readyPitch = false;   
   }
 }
 
