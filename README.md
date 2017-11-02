@@ -1,7 +1,6 @@
 # servo_camera
 
-![02_final](https://github.com/montoyamoraga/servo_camera/blob/master/pics/02_final.jpg "blabla")
-
+![02_final](https://github.com/montoyamoraga/servo_camera/blob/master/pics/02_final.jpg "servo_camera")
 
 ## About
 
@@ -51,6 +50,10 @@ pip install virtualenv
 
 * Connect the servo motors to the Arduino.
 
+![00_connections](https://github.com/montoyamoraga/servo_camera/blob/master/pics/00_connections.jpg "servo_camera")
+
+![01_servos](https://github.com/montoyamoraga/servo_camera/blob/master/pics/01_servos.jpg "servo_camera")
+
 ## Usage
 
 * Open terminal and go to the directory
@@ -84,12 +87,13 @@ pip install pyserial
 ```python
 arduinoPort = '/dev/cu.usbmodem1461'
 ```
-
 * Run the Python script on terminal
 
 ```shell
 python servo_camera.py
 ```
+
+This script is making the camera infinitely loop through the sequence [0,0], [90, 90], [180, 180], [90, 90].
 
 * When finished, deactivate the virtual environment
 
