@@ -1,4 +1,4 @@
-# servo_camera
+# tutorial-servo-camera
 
 ![02_final](https://github.com/montoyamoraga/servo_camera/blob/master/pics/02_final.jpg "servo_camera")
 
